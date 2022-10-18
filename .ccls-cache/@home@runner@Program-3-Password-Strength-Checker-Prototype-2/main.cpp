@@ -55,13 +55,7 @@ int run(string leaked_password_file, string english_word_file)
         return 1;
     }
 
-    
-
-    if(find(word_list.begin(), word_list.end(), password) != word_list.end())
-    {
-        cout << rule_msg_7;
-        return 1;
-    }
+    //the code below checks for rules 2,3,4 and 5
 
     bool has_uppercase = false;
     bool has_lowercase = false;
@@ -86,15 +80,20 @@ int run(string leaked_password_file, string english_word_file)
         {
             has_special_char = true;
         }
-    }
+        else if ((find(password_list.begin(), password_list.end(), password) != password_list.end()))
+        {
+            cout << rule_msg_6;
+        return 1;
+        }
+     }
 
-    if(!has_uppercase)
+    if(!has_uppercase) //Checks for Rule 2
     {
         cout << rule_msg_2;
         return 0;
     }
 
-    if(!has_lowercase)
+    if(!has_lowercase) //Checks for Rule 3
     {
         cout << rule_msg_3;
         return 0;
@@ -111,11 +110,9 @@ int run(string leaked_password_file, string english_word_file)
         cout << rule_msg_5;
         return 0;
     }
-    if(find(password_list.begin(), password_list.end(), password) != password_list.end())
-    {
-        cout << rule_msg_6;
-        return 1;
-    }
+
+    
+    
 
     if(find(word_list.begin(), word_list.end(), password) != word_list.end())
     {
