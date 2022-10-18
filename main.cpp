@@ -55,11 +55,7 @@ int run(string leaked_password_file, string english_word_file)
         return 1;
     }
 
-    if(find(password_list.begin(), password_list.end(), password) != password_list.end())
-    {
-        cout << rule_msg_6;
-        return 1;
-    }
+    
 
     if(find(word_list.begin(), word_list.end(), password) != word_list.end())
     {
@@ -114,6 +110,17 @@ int run(string leaked_password_file, string english_word_file)
     {
         cout << rule_msg_5;
         return 0;
+    }
+    if(find(password_list.begin(), password_list.end(), password) != password_list.end())
+    {
+        cout << rule_msg_6;
+        return 1;
+    }
+
+    if(find(word_list.begin(), word_list.end(), password) != word_list.end())
+    {
+        cout << rule_msg_7;
+        return 1;
     }
 
     cout << "The selected password is valid.";
